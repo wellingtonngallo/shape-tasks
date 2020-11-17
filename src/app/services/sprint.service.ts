@@ -1,7 +1,7 @@
-import { ISprint } from './../model/sprint';
 import { ApiService } from './../api/api.service';
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
+import { ISprint } from '../interface/sprint.interface';
 
 @Injectable({providedIn: 'root'})
 export class SprintService {
@@ -18,4 +18,8 @@ export class SprintService {
     saveSprints(data: ISprint) {
         return this.httpClient.post(`${this.apiService.getUrl()}/sprint`, data);
     }
+
+    deleteSprint(idSprint: string) {
+        return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`);
+    } 
 }
