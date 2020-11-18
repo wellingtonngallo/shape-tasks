@@ -23,6 +23,7 @@
                 <td mat-cell *matCellDef="let element">
                     <mat-icon (click)="editSprint(element._id)">edit</mat-icon>
                     <mat-icon (click)="deleteSprint(element._id)">delete</mat-icon>
+                    <a routerLink='/board'>Acessar</a>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

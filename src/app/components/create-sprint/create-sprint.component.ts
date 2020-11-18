@@ -1,5 +1,5 @@
 import { SprintService } from './../../services/sprint.service';
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 

@@ -7,6 +7,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatButtonModule,
         MatIconModule,
         MatDialogModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
     declarations: [SprintComponent],
     exports: [SprintComponent]
