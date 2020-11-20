@@ -24,7 +24,9 @@ export class SprintService {
     );
   }
 
-  deleteSprint(idSprint: string): Observable<object> {
-    return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`);
+  deleteSprint(idSprint: string): Observable<ISprint> {
+    return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`).pipe(
+      map(response => response as ISprint)
+    );
   }
 }
