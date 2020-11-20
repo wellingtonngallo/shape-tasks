@@ -1,0 +1,12 @@
+.cards {
+  overflow-x: auto;
+  display: flex;
+  height: calc(100% - 64px)
+}
+
+.card-item {
+  margin: 32px;
+  min-width: 200px;
+  background-color: #eaeaea;;
+  border-radius: 4px solid black;
+}

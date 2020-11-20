@@ -1,1 +1,12 @@
-<p>Its works</p>
+{{boards | json}}
+<div class="cards">
+  <div class="card-item" *ngFor="let board of boards">
+    <div class="card-header">
+      {{ board.name }}
+      {{ board.description }}
+    </div>
+    <div class="card-body">
+      XXX
+    </div>
+  </div>
+</div>

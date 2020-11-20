@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: SprintComponent},
-  {path: 'board', component: BoardComponent}
+  {path: 'board/:id', component: BoardComponent}
 ];
 
 @NgModule({

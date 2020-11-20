@@ -1,25 +1,30 @@
+import { Injectable } from '@angular/core';
 import { ApiService } from './../api/api.service';
-import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { ISprint } from '../interface/sprint.interface';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class SprintService {
-    
-    constructor(
-        private httpClient: HttpClient,
-        private apiService: ApiService
-    ) {}
+  constructor(
+    private httpClient: HttpClient,
+    private apiService: ApiService
+  ) {}
 
-    getSprints() {
-        return this.httpClient.get(`${this.apiService.getUrl()}/sprint`);
-    }
+  getSprints(): Observable<ISprint[]> {
+    return this.httpClient.get(`${this.apiService.getUrl()}/sprint`).pipe(
+      map(response => response as ISprint[])
+    );
+  }
 
-    saveSprints(data: ISprint) {
-        return this.httpClient.post(`${this.apiService.getUrl()}/sprint`, data);
-    }
+  saveSprints(data: ISprint): Observable<ISprint> {
+    return this.httpClient.post(`${this.apiService.getUrl()}/sprint`, data).pipe(
+      map(response => response as ISprint)
+    );
+  }
 
-    deleteSprint(idSprint: string) {
-        return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`);
-    } 
+  deleteSprint(idSprint: string): Observable<object> {
+    return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`);
+  }
 }
