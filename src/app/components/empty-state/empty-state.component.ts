@@ -1,11 +1,11 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-empty-state',
-    templateUrl: './empty-state.component.html',
-    styleUrls: ['./empty-state.component.scss']
+  selector: 'app-empty-state',
+  templateUrl: './empty-state.component.html',
+  styleUrls: ['./empty-state.component.scss']
 })
 export class EmptyStateComponent {
-    @Input() messageTitle = '';
-    @Input() messageDescription = '';
+  @Input() messageTitle = '';
+  @Input() messageDescription = '';
 }

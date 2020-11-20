@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BoardService } from './../../services/board.service';
 import { IBoard } from '../../interface/board.interface';
- 
+
 @Component({
     selector: 'app-board',
     templateUrl: './board.component.html',

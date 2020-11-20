@@ -1,12 +1,14 @@
-import { BoardComponent } from './board.component';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgModule } from "@angular/core";
+import { BoardComponent } from './board.component';
+import { TaskModule } from '../tasks/task.module';
 
 @NgModule({
-    imports: [
-        CommonModule
-    ],
-    declarations: [BoardComponent],
-    exports: [BoardComponent]
+  imports: [
+    CommonModule,
+    TaskModule
+  ],
+  declarations: [BoardComponent],
+  exports: [BoardComponent]
 })
 export class BoardModule {}

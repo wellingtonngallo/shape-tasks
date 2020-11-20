@@ -1,16 +1,12 @@
 <h1 mat-dialog-title>Criar sprint</h1>
 <form [formGroup]="createSprintForm">
-	<input
-		type="text"
-		name="name" 
-		formControlName="name"
-		placeholder="Nome"
-	/>
-	<input
-		type="text"
-		name="description"
-		formControlName="description"
-		placeholder="Descrição"
-    >
-    <button (click)="saveSprint()">Salvar</button>
+	<mat-form-field class="field">
+		<mat-label>Nome</mat-label>
+		<input type="text" matInput formControlName="name">
+	</mat-form-field>
+	<mat-form-field class="field">
+		<mat-label>Descrição</mat-label>
+		<textarea type="text" matInput formControlName="description"></textarea>
+	</mat-form-field>
+	<button mat-raised-button color="primary" (click)="saveSprint()">Salvar</button>
 </form>
