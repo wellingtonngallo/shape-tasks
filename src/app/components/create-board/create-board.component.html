@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Criar board</h1>
+<form [formGroup]="createBoardForm">
+	<mat-form-field class="field">
+		<mat-label>Nome</mat-label>
+		<input type="text" matInput formControlName="name">
+	</mat-form-field>
+	<mat-form-field class="field">
+		<mat-label>Descrição</mat-label>
+		<textarea type="text" matInput formControlName="description"></textarea>
+	</mat-form-field>
+	<button mat-raised-button color="primary" (click)="saveBoard()">Salvar</button>
+</form>

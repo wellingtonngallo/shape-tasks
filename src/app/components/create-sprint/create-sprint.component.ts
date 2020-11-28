@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SprintService } from './../../services/sprint.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ISprintForm } from '../../interface/sprint-form.interface';
 
 @Component({
     selector: 'app-create-sprint',
@@ -28,9 +29,11 @@ export class CreateSprintComponent {
     }
   }
 
-  private getEntityFromForm() {
-    const name = this.createSprintForm.get('name')!.value;
-    const description = this.createSprintForm.get('description')!.value;
+  private getEntityFromForm(): ISprintForm {
+    const getFormName = this.createSprintForm.get('name');
+    const getFormDescription = this.createSprintForm.get('description');
+    const name = getFormName?.value;
+    const description = getFormDescription?.value;
 
     return {
         name,

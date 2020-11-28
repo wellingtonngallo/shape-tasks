@@ -6,21 +6,16 @@ import { IBoard } from '../interface/board.interface';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class BoardService {
+export class TaskService {
   constructor(
     private httpClient: HttpClient,
     private apiService: ApiService
   ) {}
 
-  getBoard(idSprint: string): Observable<IBoard[]> {
-    return this.httpClient.get(`${this.apiService.getUrl()}/board/${idSprint}`).pipe(
-      map(response => response as IBoard[])
+  getTask(idBoard: string): Observable<any[]> {
+    return this.httpClient.get(`${this.apiService.getUrl()}/task/${idBoard}`).pipe(
+      map(response => response as any[])
     );
   }
 
-  saveBoard(data: IBoard): Observable<IBoard> {
-    return this.httpClient.post(`${this.apiService.getUrl()}/board`, data).pipe(
-      map(response => response as IBoard)
-    );
-  }
 }

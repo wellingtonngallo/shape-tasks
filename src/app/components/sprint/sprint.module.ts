@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CreateSprintModule } from './../create-sprint/create-sprint.model';
+import { CreateSprintModule } from '../create-sprint/create-sprint.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SprintComponent } from './sprint.component';
 import { CommonModule } from '@angular/common';

@@ -1,7 +1,7 @@
 .cards {
   overflow-x: auto;
   display: flex;
-  height: calc(100% - 64px)
+  height: calc(80% - 64px)
 }
 
 .card-item {
@@ -9,4 +9,17 @@
   min-width: 200px;
   background-color: #eaeaea;;
   border-radius: 4px solid black;
+}
+
+.header-page {
+  padding: 16px 0 8px;
+  margin-left: 32px;
+}
+
+.card-header {
+  padding: 8px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
 }

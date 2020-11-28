@@ -1,11 +1,36 @@
-<div class="cards">
-  <div class="card-item" *ngFor="let board of boards">
+<div class="header-page">
+  <h2 class="page-title">Sprint name</h2>
+  <button (click)="createBoard()" mat-raised-button color="primary">Novo board</button>
+</div>
+<div cdkDropListGroup class="cards" *ngIf="boards.length !== 0 && !loading">
+  <div        cdkDropList
+  [cdkDropListData]="board.tasks"
+  (cdkDropListDropped)="drop($event)"class="card-item" *ngFor="let board of boards; let index = index">
     <div class="card-header">
-      {{ board.name }}
-      {{ board.description }}
+      <h2>{{ board.name }}</h2>
     </div>
-    <div class="card-body">
-      <app-task></app-task>
-    </div>
+
+      <div *ngFor="let task of board.tasks" cdkDrag>
+        <span class="taskName">{{task.name}}</span>
+      </div> 
+ 
   </div>
 </div>
+<div *ngIf="boards.length === 0 && !loading">
+  <app-empty-state
+    messageTitle="Não há Boards cadastrados"
+    messageDescription="Para cadastrar um board utilize o botão abaixo"
+  >
+    <button mat-raised-button color="primary" (click)="createBoard()">Novo board</button>
+  </app-empty-state>
+</div>
+<ngx-skeleton-loader
+  *ngIf="loading"
+  [count]="5"
+  [theme]="{
+    margin: '32px',
+    width: '200px',
+    height: 'calc(80% - 135px)'
+  }"
+>
+</ngx-skeleton-loader>
