@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SprintContainerComponent } from './sprint-container.component';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CreateBoardComponent } from './create-board.component';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { CreateBoardComponent } from './create-board.component';
     MatInputModule,
     MatButtonModule
   ],
-  declarations: [CreateBoardComponent],
-  exports: [CreateBoardComponent]
+  declarations: [SprintContainerComponent],
+  exports: [SprintContainerComponent]
 })
-export class CreateBoardModule {}
+export class SprintContainerModule {}

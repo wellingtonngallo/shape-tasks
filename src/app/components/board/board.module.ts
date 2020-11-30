@@ -1,26 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BoardComponent } from './board.component';
-import { TaskModule } from '../tasks/task.module';
-import { EmptyStateModule } from '../empty-state/empty-state.module';
-import { CreateBoardModule } from '../create-board/create-board.module';
 import { MatButtonModule } from '@angular/material/button';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { BoardComponent } from './board.component';
+import { TaskModule } from '../tasks/task.module';
+import { EmptyStateModule } from '../empty-state/empty-state.module';
+import { BoardContainerModule } from '../board-container/board-container.module';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TaskContainerModule } from '../task-container/task-container.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     TaskModule,
     EmptyStateModule,
-    CreateBoardModule,
+    BoardContainerModule,
     MatButtonModule,
     NgxSkeletonLoaderModule,
     DragDropModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    TaskContainerModule,
+    ReactiveFormsModule
   ],
   declarations: [BoardComponent],
   exports: [BoardComponent]

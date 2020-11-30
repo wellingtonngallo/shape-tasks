@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateSprintComponent } from './../create-sprint/create-sprint.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+
+import { SprintContainerComponent } from '../sprint-container/sprint-container.component';
 import { ISprint } from './../../interface/sprint.interface';
 import { SprintService } from './../../services/sprint.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sprint',
@@ -13,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class SprintComponent implements OnInit {
   displayedColumns: string[] = ['name', 'description', 'date', 'config'];
   sprints: ISprint[] = [];
-  dataSource: any;
+  dataSource = new MatTableDataSource<ISprint>(this.sprints);
   loading = false;
   repeatLoad = 5;
 
@@ -31,19 +32,15 @@ export class SprintComponent implements OnInit {
     this.loading = true;
     this.sprintService.getSprints().subscribe((sprints: ISprint[]) => {
       sprints.map((sprint: ISprint) => {
-        this.loading = false;
         this.sprints.push(sprint);
         this.generateTableSource();
       });
+      this.loading = false;
     });
   }
 
   generateTableSource(): void {
     this.dataSource = new MatTableDataSource<ISprint>(this.sprints);
-  }
-
-  editSprint(idSprint: string): void {
-    console.log(idSprint);
   }
 
   deleteSprint(idSprint: number): void {
@@ -56,8 +53,18 @@ export class SprintComponent implements OnInit {
   }
 
   openSprintDialog(): void {
-    this.dialog.open(CreateSprintComponent).afterClosed().subscribe(() => {
-      this.getSprints();
+    this.dialog.open(SprintContainerComponent).afterClosed().subscribe(result => {
+      if (result) {
+        this.getSprints();
+      }
+    });
+  }
+
+  editSprint(data: ISprint): void {
+    this.dialog.open(SprintContainerComponent, {data}).afterClosed().subscribe(result => {
+      if (result) {
+        this.getSprints();
+      }
     });
   }
 }

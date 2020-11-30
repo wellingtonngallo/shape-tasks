@@ -1,19 +1,28 @@
+.board-container {
+  height: calc(100% - 150px);
+}
+
+.board-empty-state {
+  height: 100%;
+}
+
 .cards {
   overflow-x: auto;
   display: flex;
+  margin-left: 8px;
 }
 
 .card-item {
   height: calc(80% - 64px);
-  margin: 32px;
-  width: 250px;
+  margin: 8px;
+  min-width: 250px;
   background-color: #eaeaea;;
   border-radius: 4px;
 }
 
 .header-page {
   padding: 16px 0 8px;
-  margin-left: 32px;
+  margin-left: 16px;
 }
 
 .card-header {

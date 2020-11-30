@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IBoard } from '../interface/board.interface';
 import { map } from 'rxjs/operators';
 import { ITask } from '../interface/task.interface';
+import { IApiRequest } from '../interface/api-request.interface';
 
 @Injectable({providedIn: 'root'})
 export class TaskService {
@@ -19,10 +20,21 @@ export class TaskService {
     );
   }
 
+  saveTask(data: ITask, idBoard: number): Observable<IApiRequest> {
+    return this.httpClient.post(`${this.apiService.getUrl()}/tasks/${idBoard}`, data).pipe(
+      map(response => response as IApiRequest)
+    );
+  }
 
   updateTask(data: ITask, idBoard: number | string, idTask: number): Observable<ITask> {
     return this.httpClient.put(`${this.apiService.getUrl()}/tasks/${idBoard}/${idTask}`, data).pipe(
       map(response => response as ITask)
+    );
+  }
+
+  deleteTask(idTask: number): Observable<IApiRequest> {
+    return this.httpClient.delete(`${this.apiService.getUrl()}/tasks/${idTask}`).pipe(
+      map(response => response as IApiRequest)
     );
   }
 }

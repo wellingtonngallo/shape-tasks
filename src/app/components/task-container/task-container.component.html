@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Criar tarefa</h1>
+<form [formGroup]="createTaskForm">
+	<mat-form-field class="field">
+		<mat-label>Nome</mat-label>
+		<input type="text" matInput formControlName="name">
+	</mat-form-field>
+	<mat-form-field class="field">
+		<mat-label>Descrição</mat-label>
+		<textarea type="text" matInput formControlName="description"></textarea>
+	</mat-form-field>
+	<button mat-raised-button color="primary" (click)="saveTask()">Salvar</button>
+</form>

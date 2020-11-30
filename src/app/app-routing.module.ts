@@ -1,13 +1,11 @@
-import { SprintModule } from './components/sprint/sprint.module';
 import { SprintComponent } from './components/sprint/sprint.component';
-import { BoardModule } from './components/board/board.module';
 import { BoardComponent } from './components/board/board.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: SprintComponent},
-  {path: 'board/:id', component: BoardComponent}
+  {path: 'boards/:id', component: BoardComponent}
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CreateSprintComponent } from './create-sprint.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { TaskContainerComponent } from './task-container.component';
 
 @NgModule({
   imports: [
@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule
   ],
-  declarations: [CreateSprintComponent],
-  exports: [CreateSprintComponent]
+  declarations: [TaskContainerComponent],
+  exports: [TaskContainerComponent]
 })
-export class CreateSprintModule {}
+export class TaskContainerModule {}

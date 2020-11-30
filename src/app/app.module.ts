@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskModule } from './components/tasks/task.module';
+import { BoardModule } from './components/board/board.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     EmptyStateModule,
     MatButtonModule,
     SprintModule,
+    TaskModule,
+    BoardModule,
     HttpClientModule,
   ],
   providers: [],

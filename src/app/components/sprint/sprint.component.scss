@@ -15,12 +15,20 @@
 }
 
 .sprint-table table {
-  width: 80%;
+  width: 98%;
 }
 
 .header-page {
   padding: 16px 0 8px;
-  margin-left: 140px;
+  margin-left: 16px;
+}
+
+.sprint-container {
+  height: calc(100% - 150px);
+}
+
+.sprint-empty-state {
+  height: 100%;
 }
 
 mat-icon {

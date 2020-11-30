@@ -1,44 +1,60 @@
-<div class="header-page">
-  <h2 class="page-title">Sprint name</h2>
-  <button (click)="createBoard()" mat-raised-button color="primary">Novo board</button>
-</div>
-<div cdkDropListGroup class="cards" *ngIf="boards.length !== 0 && !loading">
-  <div
-    cdkDropList
-    [cdkDropListData]="board.tasks"
-    [id]="board.id"
-    (cdkDropListDropped)="dropTask($event)"
-    class="card-item"
-    *ngFor=" let board of boards; let index = index"
-  >
-    <div class="card-header">
-      <h2>{{ board.name }}</h2>
-      <div class="card-header-icon">
-        <mat-icon matTooltip="Criar tarefa">add</mat-icon>
-        <mat-icon matTooltip="Editar board">edit</mat-icon>
-        <mat-icon [matTooltip]="board.description">info</mat-icon>
-      </div>
-    </div>
-    <div class="boards-tasks" *ngFor="let task of board.tasks" cdkDrag>
-      <app-task [name]="task.name" [description]="task.description"></app-task>
-    </div> 
+<div class="board-container"> 
+  <div class="header-page">
+    <h2 class="page-title">{{ sprintName }}</h2>
+    <button
+      *ngIf="boards.length !== 0"
+      (click)="createBoard()"
+      mat-raised-button
+      color="primary"
+    >
+      Novo board
+    </button>
   </div>
-</div>
-<div *ngIf="boards.length === 0 && !loading">
-  <app-empty-state
-    messageTitle="Não há Boards cadastrados"
-    messageDescription="Para cadastrar um board utilize o botão abaixo"
+  <div cdkDropListGroup class="cards" *ngIf="boards.length !== 0 && !loading">
+    <div
+      cdkDropList
+      [cdkDropListData]="board.tasks"
+      [id]="board.id"
+      (cdkDropListDropped)="dropTask($event)"
+      class="card-item"
+      *ngFor=" let board of boards; let index = index"
+    >
+      <div class="card-header">
+        <h2>{{ board.name }}</h2>
+        <div class="card-header-icon">
+          <mat-icon matTooltip="Criar tarefa" (click)="createTask(board.id)">add</mat-icon>
+          <mat-icon matTooltip="Editar" (click)="editBoard(board)">edit</mat-icon>
+          <mat-icon matTooltip="Excluir" (click)="deleteBoard(board.id)">delete</mat-icon>
+          <mat-icon [matTooltip]="board.description">info</mat-icon>
+        </div>
+      </div>
+      <div class="boards-tasks" *ngFor="let task of board.tasks" cdkDrag>
+        <app-task
+          [task]="task"
+          [boardId]="board.id"
+          (delete)="deleteTask($event, board.id)"
+          (edit)="editTask($event)"
+        >
+      </app-task>
+      </div> 
+    </div>
+  </div>
+  <div class="board-empty-state" *ngIf="boards.length === 0 && !loading">
+    <app-empty-state
+      messageTitle="Não há Boards cadastrados"
+      messageDescription="Para cadastrar um board utilize o botão abaixo"
+    >
+      <button mat-raised-button color="primary" (click)="createBoard()">Novo board</button>
+    </app-empty-state>
+  </div>
+  <ngx-skeleton-loader
+    *ngIf="loading"
+    [count]="5"
+    [theme]="{
+      margin: '32px',
+      width: '200px',
+      height: 'calc(80% - 135px)'
+    }"
   >
-    <button mat-raised-button color="primary" (click)="createBoard()">Novo board</button>
-  </app-empty-state>
+  </ngx-skeleton-loader>
 </div>
-<ngx-skeleton-loader
-  *ngIf="loading"
-  [count]="5"
-  [theme]="{
-    margin: '32px',
-    width: '200px',
-    height: 'calc(80% - 135px)'
-  }"
->
-</ngx-skeleton-loader>
