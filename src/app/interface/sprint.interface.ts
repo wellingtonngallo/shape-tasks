@@ -1,5 +1,5 @@
 export interface ISprint {
-  _id?: string;
+  id?: number | string;
   name: string;
   createdDate?: Date;
   description: string;

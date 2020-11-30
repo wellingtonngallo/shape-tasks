@@ -13,13 +13,19 @@ export class BoardService {
   ) {}
 
   getBoard(idSprint: string): Observable<IBoard[]> {
-    return this.httpClient.get(`${this.apiService.getUrl()}/board/${idSprint}`).pipe(
+    return this.httpClient.get(`${this.apiService.getUrl()}/boards/${idSprint}`).pipe(
       map(response => response as IBoard[])
     );
   }
 
-  saveBoard(data: IBoard): Observable<IBoard> {
-    return this.httpClient.post(`${this.apiService.getUrl()}/board`, data).pipe(
+  saveBoard(data: IBoard, idSprint: string): Observable<IBoard> {
+    return this.httpClient.post(`${this.apiService.getUrl()}/boards/${idSprint}`, data).pipe(
+      map(response => response as IBoard)
+    );
+  }
+
+  updateBoard(data: IBoard, idBoard: string): Observable<IBoard> {
+    return this.httpClient.post(`${this.apiService.getUrl()}/boards/${idBoard}`, data).pipe(
       map(response => response as IBoard)
     );
   }

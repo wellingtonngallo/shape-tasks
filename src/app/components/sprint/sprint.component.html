@@ -28,18 +28,18 @@
         <td mat-cell *matCellDef="let element">
           <mat-icon
             matTooltip="Editar sprint"
-            (click)="editSprint(element._id)"
+            (click)="editSprint(element.id)"
           >
             edit
           </mat-icon>
           <mat-icon
             matTooltip="Deletar sprint"
-            (click)="deleteSprint(element._id)"
+            (click)="deleteSprint(element.id)"
           >
             delete
           </mat-icon>
           <mat-icon matTooltip="Acessar sprint">
-            <a [routerLink]="['/board', element._id]">navigate_next</a>
+            <a [routerLink]="['/board', element.id]">navigate_next</a>
           </mat-icon>
 				</td>
 			</ng-container>

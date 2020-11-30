@@ -25,24 +25,21 @@ export class CreateBoardComponent {
 
   saveBoard(): void {
     if (this.createBoardForm.valid) {
-      this.boardService.saveBoard(this.getEntityFromForm()).subscribe(item => {
+      this.boardService.saveBoard(this.getEntityFromForm(), this.data.idSprint).subscribe(item => {
         this.dialogRef.close(item);
       });
     }
   }
 
-  private getEntityFromForm(): IBoardForm {
+  private getEntityFromForm(): any {
     const getFormName = this.createBoardForm.get('name');
     const getFormDescription = this.createBoardForm.get('description');
-    const getSprintDescription = this.createBoardForm.get('idSprint');
     const name = getFormName?.value;
     const description = getFormDescription?.value;
-    const sprint = getSprintDescription?.value;
 
     return {
         name,
-        description,
-        sprint
-    };
+        description
+      };
   }
 }

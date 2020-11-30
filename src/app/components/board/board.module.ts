@@ -7,6 +7,8 @@ import { CreateBoardModule } from '../create-board/create-board.module';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CreateBoardModule,
     MatButtonModule,
     NgxSkeletonLoaderModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   declarations: [BoardComponent],
   exports: [BoardComponent]

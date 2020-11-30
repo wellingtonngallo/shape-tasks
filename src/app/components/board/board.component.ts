@@ -6,6 +6,7 @@ import { IBoard } from '../../interface/board.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateBoardComponent } from '../create-board/create-board.component';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { ITask } from 'src/app/interface/task.interface';
 
 @Component({
     selector: 'app-board',
@@ -38,24 +39,26 @@ export class BoardComponent implements OnInit {
   createBoard(): void {
     this.dialog.open(CreateBoardComponent, { data: {
       idSprint: this.route.snapshot.params.id
-    }}).afterClosed().subscribe((board: IBoard) => {
-      if (board) {
-        this.boards.push(board);
-      }
+    }}).afterClosed().subscribe(() => {
+      this.getBoards();
     });
   }
 
-
-  drop(event: CdkDragDrop<string[]>) {
-    debugger;
+  dropTask(event: CdkDragDrop<ITask[]>): void {
     if (event.previousContainer === event.container) {
-      debugger;
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+
+      event.container.data.map((item: any) => {
+        const newObject = {
+          id: item.id,
+          description: item.description,
+          name: item.name
+        };
+
+        this.taskService.updateTask(newObject, event.container.id, item.id as number).subscribe();
+      });
     }
   }
 }

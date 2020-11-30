@@ -3,17 +3,25 @@
   <button (click)="createBoard()" mat-raised-button color="primary">Novo board</button>
 </div>
 <div cdkDropListGroup class="cards" *ngIf="boards.length !== 0 && !loading">
-  <div        cdkDropList
-  [cdkDropListData]="board.tasks"
-  (cdkDropListDropped)="drop($event)"class="card-item" *ngFor="let board of boards; let index = index">
+  <div
+    cdkDropList
+    [cdkDropListData]="board.tasks"
+    [id]="board.id"
+    (cdkDropListDropped)="dropTask($event)"
+    class="card-item"
+    *ngFor=" let board of boards; let index = index"
+  >
     <div class="card-header">
       <h2>{{ board.name }}</h2>
+      <div class="card-header-icon">
+        <mat-icon matTooltip="Criar tarefa">add</mat-icon>
+        <mat-icon matTooltip="Editar board">edit</mat-icon>
+        <mat-icon [matTooltip]="board.description">info</mat-icon>
+      </div>
     </div>
-
-      <div *ngFor="let task of board.tasks" cdkDrag>
-        <span class="taskName">{{task.name}}</span>
-      </div> 
- 
+    <div class="boards-tasks" *ngFor="let task of board.tasks" cdkDrag>
+      <app-task [name]="task.name" [description]="task.description"></app-task>
+    </div> 
   </div>
 </div>
 <div *ngIf="boards.length === 0 && !loading">

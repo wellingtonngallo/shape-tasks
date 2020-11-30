@@ -1,14 +1,14 @@
 .cards {
   overflow-x: auto;
   display: flex;
-  height: calc(80% - 64px)
 }
 
 .card-item {
+  height: calc(80% - 64px);
   margin: 32px;
-  min-width: 200px;
+  width: 250px;
   background-color: #eaeaea;;
-  border-radius: 4px solid black;
+  border-radius: 4px;
 }
 
 .header-page {
@@ -17,9 +17,25 @@
 }
 
 .card-header {
+  display: flex;
   padding: 8px;
+}
+
+.card-header h2 {
+  width: 100%;
+}
+
+.card-header-icon {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .cdk-drag-placeholder {
   opacity: 0;
+}
+
+.boards-tasks {
+  padding: 8px;
 }

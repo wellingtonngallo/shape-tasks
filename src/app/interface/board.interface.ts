@@ -1,8 +1,10 @@
+import { ITask } from './task.interface';
+
 export interface IBoard {
-  _id?: string;
+  id?: any;
   name: string;
   description: string;
   sprint: string;
   createdDate?: Date;
-  tasks: [];
+  tasks: ITask[];
 }

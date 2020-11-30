@@ -1,0 +1,21 @@
+.task-container {
+  cursor: move;
+  border-radius: 4px;
+  background-color: #FFF;
+  text-align: center;
+  padding: 8px;
+  height: 85;
+  width: 215px;
+}
+
+.task-name {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+
+.task-description {
+  padding: 8px;
+}

@@ -27,8 +27,9 @@ export class SprintComponent implements OnInit {
   }
 
   getSprints(): void {
+    this.sprints = [];
     this.loading = true;
-    this.sprintService.getSprints().subscribe((sprints: any) => {
+    this.sprintService.getSprints().subscribe((sprints: ISprint[]) => {
       sprints.map((sprint: ISprint) => {
         this.loading = false;
         this.sprints.push(sprint);
@@ -45,9 +46,9 @@ export class SprintComponent implements OnInit {
     console.log(idSprint);
   }
 
-  deleteSprint(idSprint: string): void {
+  deleteSprint(idSprint: number): void {
     this.sprints = this.sprints.filter(item => {
-      return item._id !== idSprint;
+      return item.id !== idSprint;
     });
 
     this.generateTableSource();
@@ -55,11 +56,8 @@ export class SprintComponent implements OnInit {
   }
 
   openSprintDialog(): void {
-    this.dialog.open(CreateSprintComponent).afterClosed().subscribe((sprint: ISprint) => {
-      if (sprint) {
-        this.sprints.push(sprint);
-        this.generateTableSource();
-      }
+    this.dialog.open(CreateSprintComponent).afterClosed().subscribe(() => {
+      this.getSprints();
     });
   }
 }

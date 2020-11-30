@@ -13,19 +13,19 @@ export class SprintService {
   ) {}
 
   getSprints(): Observable<ISprint[]> {
-    return this.httpClient.get(`${this.apiService.getUrl()}/sprint`).pipe(
+    return this.httpClient.get(`${this.apiService.getUrl()}/sprints`).pipe(
       map(response => response as ISprint[])
     );
   }
 
   saveSprints(data: ISprint): Observable<ISprint> {
-    return this.httpClient.post(`${this.apiService.getUrl()}/sprint`, data).pipe(
+    return this.httpClient.post(`${this.apiService.getUrl()}/sprints`, data).pipe(
       map(response => response as ISprint)
     );
   }
 
-  deleteSprint(idSprint: string): Observable<ISprint> {
-    return this.httpClient.delete(`${this.apiService.getUrl()}/sprint/${idSprint}`).pipe(
+  deleteSprint(idSprint: number): Observable<ISprint> {
+    return this.httpClient.delete(`${this.apiService.getUrl()}/sprints/${idSprint}`).pipe(
       map(response => response as ISprint)
     );
   }

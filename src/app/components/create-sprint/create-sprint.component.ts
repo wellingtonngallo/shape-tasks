@@ -23,8 +23,8 @@ export class CreateSprintComponent {
 
   saveSprint(): void {
     if (this.createSprintForm.valid) {
-      this.sprintServce.saveSprints(this.getEntityFromForm()).subscribe(item => {
-        this.dialogRef.close(item);
+      this.sprintServce.saveSprints(this.getEntityFromForm()).subscribe(() => {
+        this.dialogRef.close();
       });
     }
   }
