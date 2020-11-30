@@ -20,7 +20,7 @@
       *ngFor=" let board of boards; let index = index"
     >
       <div class="card-header">
-        <h2>{{ board.name }}</h2>
+        <span>{{ board.name }}</span>
         <div class="card-header-icon">
           <mat-icon matTooltip="Criar tarefa" (click)="createTask(board.id)">add</mat-icon>
           <mat-icon matTooltip="Editar" (click)="editBoard(board)">edit</mat-icon>
